@@ -27,7 +27,7 @@ To install and run this project, follow these steps:
     nvm install
     ```
 
-    after that you can use teh following command to set the
+    after that you can use the following command to set the
     version after to navigate to the folder
 
     ```bash
