@@ -44,8 +44,8 @@ export class AppService {
             return steps;
         }
 
-        // Solve the problem
         // Loop until one of the buckets contains the target volume
+        // or until the target volume is reached
         while (bucketX !== amountWanted && bucketY !== amountWanted) {
             if (bucketX === 0) {
                 bucketX = xCapacity;
@@ -76,6 +76,7 @@ export class AppService {
             }
         }
 
+        // return the steps
         return steps;
     }
 

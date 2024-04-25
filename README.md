@@ -62,3 +62,70 @@ To run the tests use this command
 ```bash
 npm run test
 ```
+
+## Endpoints
+
+### POST /solve
+
+This endpoint is used to solve the water jug puzzle and calculate the steps required to reach the desired water measurement.
+
+#### Parameters
+
+| Name            | Type   | Description                     |
+| --------------- | ------ | ------------------------------- |
+| x_capacity      | number | The capacity of the first jug.  |
+| y_capacity      | number | The capacity of the second jug. |
+| z_amount_wanted | number | The desired water measurement.  |
+
+#### Request Example
+
+```json
+{
+    "x_capacity": 4,
+    "y_capacity": 3,
+    "z_amount_wanted": 2
+}
+```
+
+#### Response Example
+
+```json
+[
+    {
+        "step": 1,
+        "bucketX": 4,
+        "bucketY": 0,
+        "action": "Fill bucket X"
+    },
+    {
+        "step": 2,
+        "bucketX": 1,
+        "bucketY": 3,
+        "action": "Transfer from bucket X to bucket Y"
+    },
+    {
+        "step": 3,
+        "bucketX": 1,
+        "bucketY": 0,
+        "action": "Empty bucket Y"
+    },
+    {
+        "step": 4,
+        "bucketX": 0,
+        "bucketY": 1,
+        "action": "Transfer from bucket X to bucket Y"
+    },
+    {
+        "step": 5,
+        "bucketX": 4,
+        "bucketY": 1,
+        "action": "Fill bucket X"
+    },
+    {
+        "step": 6,
+        "bucketX": 2,
+        "bucketY": 3,
+        "action": "Transfer from bucket X to bucket Y"
+    }
+]
+```
