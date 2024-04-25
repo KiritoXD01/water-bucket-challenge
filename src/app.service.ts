@@ -15,6 +15,19 @@ export class AppService {
         // Calculate the greatest common divisor of the two capacities
         const gcd = this.gcd(xCapacity, yCapacity);
 
+        // First we check if all the values are positive
+        if (xCapacity <= 0 || yCapacity <= 0 || amountWanted <= 0) {
+            return [
+                {
+                    step: 1,
+                    bucketX: 0,
+                    bucketY: 0,
+                    action: `All values must be positive.`,
+                },
+            ];
+        }
+
+        // If the target volume is not divisible by the gcd, it is not achievable
         if (amountWanted % gcd !== 0) {
             return [
                 {
@@ -30,9 +43,14 @@ export class AppService {
         let bucketX = 0;
         let bucketY = 0;
 
+        // Initialize steps
         const steps: Step[] = [];
 
+        // Initialize step counter
         let step = 1;
+
+        // Solve the problem
+        // Loop until one of the buckets contains the target volume
         while (bucketX !== amountWanted && bucketY !== amountWanted) {
             if (bucketX === 0) {
                 bucketX = xCapacity;
@@ -68,16 +86,11 @@ export class AppService {
 
     /**
      * Find the greatest common divisor of two numbers
-     * @param a
-     * @param b
+     * @param a The first number
+     * @param b The second number
      * @returns the greatest common divisor of a and b
      */
     private gcd(a: number, b: number): number {
-        while (b !== 0) {
-            const temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
+        return b === 0 ? a : this.gcd(b, a % b);
     }
 }
