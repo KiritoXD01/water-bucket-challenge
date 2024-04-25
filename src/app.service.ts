@@ -14,40 +14,35 @@ export class AppService {
     }): Step[] {
         // Calculate the greatest common divisor of the two capacities
         const gcd = this.gcd(xCapacity, yCapacity);
-
-        // First we check if all the values are positive
-        if (xCapacity <= 0 || yCapacity <= 0 || amountWanted <= 0) {
-            return [
-                {
-                    step: 1,
-                    bucketX: 0,
-                    bucketY: 0,
-                    action: `All values must be positive.`,
-                },
-            ];
-        }
-
-        // If the target volume is not divisible by the gcd, it is not achievable
-        if (amountWanted % gcd !== 0) {
-            return [
-                {
-                    step: 1,
-                    bucketX: 0,
-                    bucketY: 0,
-                    action: `Target volume ${amountWanted} is not achievable with jug capacities ${xCapacity} and ${yCapacity}.`,
-                },
-            ];
-        }
-
+        // Initialize steps
+        const steps: Step[] = [];
+        // Initialize step counter
+        let step = 1;
         // Initialize buckets
         let bucketX = 0;
         let bucketY = 0;
 
-        // Initialize steps
-        const steps: Step[] = [];
+        // First we check if all the values are positive
+        if (xCapacity <= 0 || yCapacity <= 0 || amountWanted <= 0) {
+            steps.push({
+                step,
+                bucketX,
+                bucketY,
+                action: `All values must be positive.`,
+            });
+            return steps;
+        }
 
-        // Initialize step counter
-        let step = 1;
+        // If the target volume is not divisible by the gcd, it is not achievable
+        if (amountWanted % gcd !== 0) {
+            steps.push({
+                step,
+                bucketX,
+                bucketY,
+                action: `All values must be positive.`,
+            });
+            return steps;
+        }
 
         // Solve the problem
         // Loop until one of the buckets contains the target volume
