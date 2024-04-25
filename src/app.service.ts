@@ -44,6 +44,12 @@ export class AppService {
                 });
             } else if (bucketY === yCapacity) {
                 bucketY = 0;
+                steps.push({
+                    step: step++,
+                    bucketX,
+                    bucketY,
+                    action: `Empty bucket Y`,
+                });
             } else {
                 const transfer = Math.min(bucketX, yCapacity - bucketY);
                 bucketX -= transfer;
