@@ -4,8 +4,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Step } from './interfaces/Steps';
 import { SolveDto } from './dto/solve.dto';
+import { State } from './interfaces/State';
 
 describe('AppController', () => {
     let appController: AppController;
@@ -28,7 +28,7 @@ describe('AppController', () => {
                 y_capacity: 5,
                 z_amount_wanted: 4,
             };
-            const steps: Step[] = [
+            const steps: State[] = [
                 {
                     step: 1,
                     bucketX: 3,
@@ -84,7 +84,7 @@ describe('AppController', () => {
                 y_capacity: 5,
                 z_amount_wanted: 7,
             };
-            const steps: Step[] = [
+            const steps: State[] = [
                 {
                     step: 1,
                     bucketX: 0,
@@ -105,7 +105,7 @@ describe('AppController', () => {
                 z_amount_wanted: -1,
             };
 
-            const steps: Step[] = [
+            const steps: State[] = [
                 {
                     step: 1,
                     bucketX: 0,
@@ -126,7 +126,7 @@ describe('AppController', () => {
                 z_amount_wanted: 4,
             };
 
-            const steps: Step[] = [
+            const steps: State[] = [
                 {
                     step: 1,
                     bucketX: 0,
@@ -147,7 +147,7 @@ describe('AppController', () => {
                 z_amount_wanted: 4,
             };
 
-            const steps: Step[] = [
+            const steps: State[] = [
                 {
                     step: 1,
                     bucketX: 0,

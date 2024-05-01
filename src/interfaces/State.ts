@@ -1,4 +1,4 @@
-export interface Step {
+export interface State {
     step: number;
     bucketX: number;
     bucketY: number;

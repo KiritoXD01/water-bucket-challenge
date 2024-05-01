@@ -1,6 +1,5 @@
 import { Body, Controller, Get, HttpCode, Post, Res } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Step } from './interfaces/Steps';
 import { SolveDto } from './dto/solve.dto';
 import {
     ApiBadRequestResponse,
@@ -11,6 +10,7 @@ import {
     ApiTags,
 } from '@nestjs/swagger';
 import { Response } from 'express';
+import { State } from './interfaces/State';
 
 @Controller()
 @ApiTags('Water Jug Problem')
@@ -52,7 +52,7 @@ export class AppController {
     @ApiOperation({
         summary: 'Solve the water jug problem',
     })
-    getSolve(@Body() data: SolveDto): Step[] {
+    getSolve(@Body() data: SolveDto): State[] {
         return this.appService.solve({
             xCapacity: data.x_capacity,
             yCapacity: data.y_capacity,
